@@ -12,7 +12,18 @@ def start(message):
                                       "/add BTC — добавить монету\n"
                                       "/list — показать монеты\n"
                                       "/signal BTC — получить сигнал")
+@bot.message_handler(commands=['signal'])
+def handle_signal(message):
+    try:
+        _, coin = message.text.split()
+        coin = coin.upper()
+        bot.reply_to(message, f"📊 Сигнал для {coin}:\n...")
+    except:
+        bot.reply_to(message, "⚠ Используй формат: /signal BTC")
 
+@bot.message_handler(func=lambda message: True)
+def handle_coin_text(message):
+    bot.reply_to(message, "Пока это просто тестовый ответ.")
 @bot.message_handler(commands=['add'])
 def add_coin(message):
     try:
@@ -23,22 +34,7 @@ def add_coin(message):
     except:
         bot.reply_to(message, "⚠ Используй формат: /add BTC")
 
-@bot.message_handler(commands=['list'])
-def show_list(message):
-    user_id = message.from_user.id
-    coins = user_watchlist.get(user_id, [])
-    if coins:
-        bot.reply_to(message, "Ваши монеты:\n" + "\n".join(coins))
-    else:
-        bot.reply_to(message, "Ваш список пуст. Добавьте монеты через /add")
 
-@bot.message_handler(commands=['signal'])
-def signal_coin(message):
-    try:
-        _, coin = message.text.split()
-        coin = coin.upper()
-        bot.reply_to(message, f"📊 Сигнал для {coin}:\n...")
-bot.reply_to(message, "Пока это просто тестовый ответ.")
     except:
         bot.reply_to(message, "⚠ Используй формат: /signal BTC")
 
