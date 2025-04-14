@@ -26,9 +26,9 @@ user_watchlist = load_watchlist()
 def start(message):
     bot.send_message(message.chat.id, "Привет! Я отслеживаю криптомонеты. Используй команды:\n"
                                       "/add BTC — добавить монету\n"
-"
+
                                       "/list — показать монеты \n"
-"
+
                                       "/signal BTC — получить сигнал"
                     )
 
