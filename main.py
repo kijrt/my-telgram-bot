@@ -42,12 +42,18 @@ bot.reply_to(message, "Пока это просто тестовый ответ.
     except:
         bot.reply_to(message, "⚠ Используй формат: /signal BTC")
 
+@bot.message_handler(commands=['signal'])
+def handle_signal(message):
+    try:
+        _, coin = message.text.split()
+        coin = coin.upper()
+        bot.reply_to(message, f"📊 Сигнал для {coin}:\n...")
+    except:
+        bot.reply_to(message, "⚠ Используй формат: /signal BTC")
+
 @bot.message_handler(func=lambda message: True)
 def handle_coin_text(message):
-    coin = message.text.strip().upper()
-    if coin.isalpha() and len(coin) <= 10:
-        bot.reply_to(message, f"📊 Анализ монеты {coin}")
-bot.reply_to(message, "псевдоответ для теста")
+    bot.reply_to(message, "Пока это просто тестовый ответ.")
     else:
         bot.reply_to(message, "Я не понимаю. Используй команды /add, /list, /signal")
 
