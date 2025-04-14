@@ -47,7 +47,7 @@ def handle_coin_text(message):
     coin = message.text.strip().upper()
     if coin.isalpha() and len(coin) <= 10:
         bot.reply_to(message, f"📊 Анализ монеты {coin}")
-(псевдоответ для теста)")
+bot.reply_to(message, "псевдоответ для теста")
     else:
         bot.reply_to(message, "Я не понимаю. Используй команды /add, /list, /signal")
 
