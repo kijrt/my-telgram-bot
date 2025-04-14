@@ -48,7 +48,7 @@ def list_coins(message):
     user_id = str(message.from_user.id)
     coins = user_watchlist.get(user_id, [])
     if coins:
-        bot.reply_to(message, "Ваши монеты:"
+        bot.reply_to(message, "Ваши монеты:"bot.reply_to(message, f"Ваши монеты:\n{coin_list}")
 " + "
 ".join(coins))"
     else:
