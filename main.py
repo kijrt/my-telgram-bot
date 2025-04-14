@@ -38,7 +38,7 @@ def signal_coin(message):
         _, coin = message.text.split()
         coin = coin.upper()
         bot.reply_to(message, f"📊 Сигнал для {coin}:\n...")
-Пока это просто тестовый ответ.")
+bot.reply_to(message, "Пока это просто тестовый ответ.")
     except:
         bot.reply_to(message, "⚠ Используй формат: /signal BTC")
 
